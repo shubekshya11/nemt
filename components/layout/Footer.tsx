@@ -10,7 +10,6 @@ const footerNavigation = {
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "HIPAA Compliance", href: "/hipaa" },
   ],
 };
 

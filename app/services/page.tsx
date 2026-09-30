@@ -13,7 +13,7 @@ export default function ServicesPage() {
         "Trained drivers in wheelchair assistance",
         "Comfortable and safe transport"
       ],
-      image: "/picture1.jpeg"
+      image: "/6.jpeg"
     },
     {
       number: "02", 
