@@ -224,17 +224,19 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            title="Service Area"
-            intro="We serve Omaha, La Vista, Bellevue, Papillion and the surrounding communities in Douglas and Sarpy Counties."
-            className="mb-12"
-          />
-          <ServiceAreaMap />
-        </div>
-      </section>
+     {/* Map Section */}
+<section className="py-12 md:py-16 bg-white">
+  <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <SectionHeading
+      title="Service Area"
+      intro="We serve Omaha, La Vista, Bellevue, Papillion and the surrounding communities in Douglas and Sarpy Counties."
+      className="mb-12"
+    />
+    <div className="relative isolate z-0 h-[350px] w-full md:h-[450px]">
+      <ServiceAreaMap />
+    </div>
+  </div>
+</section>
     </div>
   );
 }

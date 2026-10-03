@@ -56,16 +56,18 @@ export default function Home() {
 
             {/* Right Image - Editorial Crop */}
             <div className="lg:col-span-7 order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative aspect-[4/3] w-full max-w-lg lg:max-w-xl">
-                <Image
-                  src="/first.jpeg"
-                  alt="Accessible medical transportation vehicle"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 32rem"
-                  className="object-cover"
-                  priority
-                  loading="eager"
-                />
+              <div className="relative aspect-[16/9] w-full max-w-lg lg:max-w-xl">
+                <div className="absolute inset-0 bg-gray-200 rounded-lg">
+                  <Image
+                    src="/first.jpeg"
+                    alt="Accessible medical transportation vehicle"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 32rem"
+                    className="object-cover rounded-lg"
+                    priority
+                    loading="eager"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -93,7 +95,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left - Service List */}
             <div className="space-y-0">
-              <p className="text-xs font-medium tracking-wide uppercase mb-8" style={{ color: 'var(--color-secondary-600)' }}>
+              <p className="text-md font-medium tracking-wide uppercase mb-8" style={{ color: 'var(--color-secondary-600)' }}>
                 OUR SERVICES
               </p>
 
@@ -128,14 +130,14 @@ export default function Home() {
             </div>
 
             {/* Right - Large Image */}
-            <div className="relative aspect-[4/3] w-full max-w-lg mx-auto lg:mx-0 lg:sticky lg:top-24">
-              <div className="absolute inset-0 bg-gray-200">
+            <div className="relative aspect-[16/9] w-full max-w-lg mx-auto lg:mx-0 lg:sticky lg:top-24">
+              <div className="absolute inset-0 bg-gray-200 rounded-lg">
                 <Image
                   src="/2.jpeg"
                   alt="Accessible transportation services"
                   fill
                   sizes="(max-width: 768px) 100vw, 28rem"
-                  className="object-cover"
+                  className="object-cover rounded-lg"
                   loading="eager"
                 />
               </div>
@@ -147,16 +149,16 @@ export default function Home() {
       {/* How It Works Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left - Image */}
-            <div className="relative aspect-[4/3] w-full max-w-lg mx-auto lg:mx-0 lg:sticky lg:top-24">
-              <div className="absolute inset-0 bg-gray-200">
+            <div className="relative aspect-[16/9] w-full max-w-lg mx-auto lg:mx-auto">
+              <div className="absolute inset-0 bg-gray-200 rounded-lg">
                 <Image
                   src="/3.jpeg"
                   alt="Professional driver providing transportation service"
                   fill
                   sizes="(max-width: 768px) 100vw, 28rem"
-                  className="object-cover"
+                  className="object-cover rounded-lg"
                   loading="eager"
                 />
               </div>
@@ -164,7 +166,7 @@ export default function Home() {
 
             {/* Right - Process List */}
             <div className="space-y-0">
-              <p className="text-xs font-medium tracking-wide uppercase mb-8" style={{ color: 'var(--color-secondary-600)' }}>
+              <p className="text-sm font-medium tracking-wide uppercase mb-8" style={{ color: 'var(--color-secondary-600)' }}>
                 YOUR RIDE
               </p>
 
@@ -216,14 +218,14 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left - Large Image */}
-            <div className="relative aspect-[4/3] w-full max-w-lg mx-auto lg:mx-0">
-              <div className="absolute inset-0 bg-gray-200">
+            <div className="relative aspect-[16/9] w-full max-w-lg mx-auto lg:mx-0">
+              <div className="absolute inset-0 bg-gray-200 rounded-lg">
                 <Image
                   src="/picture4.jpeg"
                   alt="Wheelchair user being assisted into accessible vehicle"
                   fill
                   sizes="(max-width: 768px) 100vw, 28rem"
-                  className="object-cover"
+                  className="object-cover rounded-lg"
                   loading="eager"
                 />
               </div>
@@ -248,43 +250,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Service Area Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left - Content */}
-            <div className="space-y-8">
-              <div className="space-y-3">
-                <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900">
-                  WHERE WE GO
-                </h2>
-                <p className="text-2xl lg:text-3xl font-semibold" style={{ color: 'var(--color-primary-600)' }}>
-                  OMAHA METRO AREA
-                </p>
-              </div>
+     {/* Service Area Section */}
+<section className="py-12 md:py-16 bg-white">
+  <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-              <div className="space-y-4">
-                <ul className="space-y-3">
-                  {['Omaha', 'La Vista', 'Bellevue', 'Papillion'].map((city, index) => (
-                    <li key={index} className="text-base text-gray-700 flex items-center gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--color-secondary-500)' }}></span>
-                      {city}
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-sm text-gray-600 pt-2">
-                  Serving surrounding communities across Douglas and Sarpy Counties.
-                </p>
-              </div>
-            </div>
+      {/* Left - Content */}
+      <div className="space-y-8">
+        <div className="space-y-3">
+          <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900">
+            WHERE WE GO
+          </h2>
 
-            {/* Right - Map Visual */}
-            <div className="relative aspect-square max-w-md mx-auto lg:mx-0">
-              <ServiceAreaMap />
-            </div>
-          </div>
+          <p
+            className="text-2xl lg:text-3xl font-semibold"
+            style={{ color: 'var(--color-primary-600)' }}
+          >
+            OMAHA METRO AREA
+          </p>
         </div>
-      </section>
+
+        <div className="space-y-4">
+          <ul className="space-y-3">
+            {['Omaha', 'La Vista', 'Bellevue', 'Papillion'].map((city) => (
+              <li
+                key={city}
+                className="text-base text-gray-700 flex items-center gap-3"
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full shrink-0"
+                  style={{ backgroundColor: 'var(--color-secondary-500)' }}
+                ></span>
+                {city}
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-sm text-gray-600 pt-2">
+            Serving surrounding communities across Douglas and Sarpy Counties.
+          </p>
+        </div>
+      </div>
+
+      {/* Right - Map */}
+      <div className="relative isolate z-0 mx-auto h-[320px] w-full max-w-2xl md:h-[400px] lg:mx-0">
+        <ServiceAreaMap />
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Trust Statement Section */}
       <section className="py-12 md:py-16 bg-gray-50">
@@ -335,14 +350,14 @@ export default function Home() {
             </div>
 
             {/* Right - Image */}
-            <div className="relative aspect-[4/3] w-full max-w-lg mx-auto lg:mx-0">
-              <div className="absolute inset-0 bg-gray-200">
+            <div className="relative aspect-[16/9] w-full max-w-lg mx-auto lg:mx-0">
+              <div className="absolute inset-0 bg-gray-200 rounded-lg">
                 <Image
                   src="/4.jpeg"
                   alt="Medical transportation vehicle ready for service"
                   fill
                   sizes="(max-width: 768px) 100vw, 28rem"
-                  className="object-cover"
+                  className="object-cover rounded-lg"
                   loading="eager"
                 />
               </div>
