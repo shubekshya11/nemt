@@ -6,9 +6,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { name: "About", href: "/about" },
+  { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
-  { name: "Service Area", href: "/service-area" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 

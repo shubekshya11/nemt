@@ -1,234 +1,258 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/Button";
+import { Photo } from "@/components/ui/Photo";
+
+const contactSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().optional().refine((val) => !val || /^\d{10}$/.test(val.replace(/\D/g, "")), {
+    message: "Invalid phone number format"
+  }),
+  message: z.string().min(1, "Message is required")
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting }
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema)
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We will contact you soon.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error("Failed to submit form");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("There was an error submitting your message. Please try again.");
+    }
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="flex flex-col">
+        <section className="py-24 lg:py-32 bg-white">
+          <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
+            <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
+              Thank You!
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              Your message has been sent successfully. We'll get back to you soon.
+            </p>
+            <Button href="/">Return Home</Button>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
+      {/* Header Section */}
       <section className="py-24 lg:py-32 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-8">
-              <p className="text-sm font-medium tracking-wide uppercase" style={{ color: 'var(--color-secondary-600)' }}>
-                CONTACT US
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="space-y-8">
               <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-                GET IN<br />
-                <span style={{ color: 'var(--color-primary-600)' }}>TOUCH.</span>
+                Contact Us
               </h1>
-              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-                Ready to schedule your ride or have questions about our services? We're here to help.
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Questions about a ride, coverage or service areas? Send us a note or call. We read every message.
               </p>
             </div>
-            <div className="lg:col-span-5">
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src="/picture1.jpeg"
-                  alt="Contact Guideway Medical Transportation"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 41vw"
-                  className="object-cover"
-                  priority
-                  loading="eager"
-                />
-              </div>
+            <div className="h-full min-h-[150px] lg:min-h-[200px]">
+              <Photo 
+                src="/picture1.jpeg" 
+                alt="Friendly dispatch team" 
+                ratio="aspect-[16/9]" 
+                priority 
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Information Section */}
+      {/* Get In Touch Section */}
       <section className="py-24 lg:py-32 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            <div className="space-y-12">
-              <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900">
-                CONTACT INFORMATION
-              </h2>
-              
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-medium text-gray-900">Phone</h3>
-                  <a 
-                    href="tel:4242981507" 
-                    className="text-2xl text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    (424) 298-1507
-                  </a>
-                  <p className="text-gray-600">
-                    Call us directly to schedule your ride or ask questions about our services.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-xl font-medium text-gray-900">Email</h3>
-                  <a 
-                    href="mailto:guidewaynemt@gmail.com" 
-                    className="text-2xl text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    guidewaynemt@gmail.com
-                  </a>
-                  <p className="text-gray-600">
-                    Send us an email and we'll get back to you as soon as possible.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-xl font-medium text-gray-900">Address</h3>
-                  <address className="text-2xl text-gray-600 not-italic">
-                    LaVista, Nebraska
-                  </address>
-                  <p className="text-gray-600">
-                    Serving the Omaha metropolitan area and surrounding communities.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative aspect-[4/5]">
-              <div className="absolute inset-0 bg-gray-200">
-                <Image
-                  src="/picture2.jpeg"
-                  alt="Guideway Medical Transportation location"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 41vw"
-                  className="object-cover"
-                  loading="eager"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-4">
-              SEND US A MESSAGE
+              Get In Touch
             </h2>
             <p className="text-xl text-gray-600">
-              Fill out the form below and we'll get back to you soon.
+              Let's answer your queries
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium text-gray-900">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
-                  style={{ outlineColor: 'var(--color-primary-600)' }}
-                  placeholder="Your name"
-                />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Contact Details */}
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
+                  <span className="text-white font-bold text-sm">Ph</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">Phone number</h3>
+                  <a href="tel:4242981507" className="text-xl text-gray-600 hover:text-gray-900 transition-colors">
+                    (424) 298-1507
+                  </a>
+                </div>
               </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-gray-900">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
-                  style={{ outlineColor: 'var(--color-primary-600)' }}
-                  placeholder="your@email.com"
-                />
+
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
+                  <span className="text-white font-bold text-sm">@</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">Email address</h3>
+                  <a href="mailto:guidewaynemt@gmail.com" className="text-xl text-gray-600 hover:text-gray-900 transition-colors">
+                    guidewaynemt@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
+                  <span className="text-white font-bold text-sm">Pin</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">Location</h3>
+                  <address className="text-xl text-gray-600 not-italic">
+                    LaVista, Nebraska
+                  </address>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="phone" className="text-sm font-medium text-gray-900">
-                Phone
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
-                style={{ outlineColor: 'var(--color-primary-600)' }}
-                placeholder="(424) 298-1507"
-              />
-            </div>
+            {/* Contact Form */}
+            <div className="bg-white border border-gray-200 rounded-lg p-8">
+              <h3 className="text-2xl font-medium text-gray-900 mb-6">Send Message</h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label htmlFor="firstName" className="text-sm font-medium text-gray-900">
+                      First Name *
+                    </label>
+                    <input
+                      id="firstName"
+                      {...register("firstName")}
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
+                      style={{ outlineColor: 'var(--color-primary-600)' }}
+                      placeholder="John"
+                    />
+                    {errors.firstName && (
+                      <p className="text-sm text-red-600">{errors.firstName.message}</p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="lastName" className="text-sm font-medium text-gray-900">
+                      Last Name *
+                    </label>
+                    <input
+                      id="lastName"
+                      {...register("lastName")}
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
+                      style={{ outlineColor: 'var(--color-primary-600)' }}
+                      placeholder="Doe"
+                    />
+                    {errors.lastName && (
+                      <p className="text-sm text-red-600">{errors.lastName.message}</p>
+                    )}
+                  </div>
+                </div>
 
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium text-gray-900">
-                Message
-              </label>
-              <textarea
-                id="message"
-                required
-                rows={6}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md resize-none"
-                style={{ outlineColor: 'var(--color-primary-600)' }}
-                placeholder="Tell us about your transportation needs..."
-              />
-            </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-gray-900">
+                      Email *
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      {...register("email")}
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
+                      style={{ outlineColor: 'var(--color-primary-600)' }}
+                      placeholder="john@example.com"
+                    />
+                    {errors.email && (
+                      <p className="text-sm text-red-600">{errors.email.message}</p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-sm font-medium text-gray-900">
+                      Phone No.
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      {...register("phone")}
+                      className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
+                      style={{ outlineColor: 'var(--color-primary-600)' }}
+                      placeholder="(424) 298-1507"
+                    />
+                    {errors.phone && (
+                      <p className="text-sm text-red-600">{errors.phone.message}</p>
+                    )}
+                  </div>
+                </div>
 
-            <button
-              type="submit"
-              className="w-full px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md"
-              style={{
-                backgroundColor: 'var(--color-primary-600)',
-                outlineColor: 'var(--color-primary-600)'
-              }}
-            >
-              Send Message
-            </button>
-          </form>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium text-gray-900">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    {...register("message")}
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md resize-none"
+                    style={{ outlineColor: 'var(--color-primary-600)' }}
+                    placeholder="Tell us about your transportation needs..."
+                  />
+                  {errors.message && (
+                    <p className="text-sm text-red-600">{errors.message.message}</p>
+                  )}
+                </div>
+
+                <Button type="submit" disabled={isSubmitting} variant="gold">
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Quick Contact Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
-            PREFER TO CALL?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Our team is available to answer your questions and help you schedule your ride.
-          </p>
-          <a
-            href="tel:4242981507"
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md"
-            style={{
-              backgroundColor: 'var(--color-primary-600)',
-              outlineColor: 'var(--color-primary-600)'
-            }}
-          >
-            Call (424) 298-1507
-          </a>
+      {/* Map Section */}
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="h-[300px] md:h-[400px] bg-gray-100 rounded-lg flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-6xl mb-4">🗺️</div>
+              <p className="text-xl text-gray-600">Google Maps Placeholder</p>
+              <p className="text-sm text-gray-500 mt-2">Ready for Google Maps embed</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -1,289 +1,109 @@
-import Link from "next/link";
-import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { PhotoGrid } from "@/components/ui/PhotoGrid";
+import { Photo } from "@/components/ui/Photo";
 
 export default function ServicesPage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
+      {/* Intro Section */}
       <section className="py-24 lg:py-32 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-4xl space-y-8">
-            <p className="text-sm font-medium tracking-wide uppercase" style={{ color: 'var(--color-secondary-600)' }}>
-              SERVICES
-            </p>
-            <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-              Transportation built around<br />
-              <span style={{ color: 'var(--color-primary-600)' }}>your mobility needs.</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
-              Whether you use a wheelchair or need additional assistance getting to your appointment, we provide comfortable, dependable non-emergency transportation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link
-                href="#wheelchair"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                style={{
-                  backgroundColor: 'var(--color-primary-600)',
-                  outlineColor: 'var(--color-primary-600)'
-                }}
-              >
-                Explore Wheelchair
-              </Link>
-              <Link
-                href="#ambulatory"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-gray-900 border-2 border-gray-300 transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-              >
-                Explore Ambulatory
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="space-y-8">
+              <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
+                Services
+              </h1>
+              <h2 className="text-3xl lg:text-4xl font-medium" style={{ color: 'var(--color-primary-600)' }}>
+                Transportation that comes to your door
+              </h2>
+              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+                Safe, on-time rides to medical appointments for people who need more than a regular car. Choose the kind of ride that fits your needs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button href="#wheelchair">Explore Wheelchair Rides</Button>
+                <Button href="#ambulatory" variant="secondary">Ambulatory Rides</Button>
+              </div>
+            </div>
+            <div className="h-full min-h-[150px] lg:min-h-[200px]">
+              <Photo 
+                src="/picture4.jpeg" 
+                alt="Guideway vehicle at a clinic entrance" 
+                ratio="aspect-[16/9]" 
+                priority 
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Wheelchair Transportation Section */}
+      {/* Wheelchair Section */}
       <section id="wheelchair" className="py-24 lg:py-32 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            <div className="space-y-12">
-              <div className="space-y-6">
-                <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-                  Safe journeys.<br />
-                  <span style={{ color: 'var(--color-primary-600)' }}>Accessible by design.</span>
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Designed for passengers who need to remain in their wheelchair throughout the journey.
-                </p>
-              </div>
-
-              <div className="space-y-8">
-                <h3 className="text-xl font-medium text-gray-900">WHAT TO EXPECT</h3>
-                <div className="space-y-4">
-                  {[
-                    "Wheelchair-accessible vehicle",
-                    "Secure wheelchair positioning", 
-                    "Comfortable, respectful journey",
-                    "Safe arrival at your destination"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4">
-                      <span className="text-2xl font-semibold" style={{ color: 'var(--color-primary-600)' }}>
-                        0{index + 1}
-                      </span>
-                      <p className="text-gray-700 pt-1">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <h3 className="text-xl font-medium text-gray-900">WHO THIS SERVICE IS FOR</h3>
-                <p className="text-gray-600 mb-4">Passengers who:</p>
-                <ul className="space-y-3">
-                  {[
-                    "Use a manual wheelchair",
-                    "Use a power wheelchair",
-                    "Need to remain in their wheelchair",
-                    "Need accessible transportation to appointments"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-700">
-                      <span className="w-1.5 h-1.5 rounded-full mt-2.5 flex-shrink-0" style={{ backgroundColor: 'var(--color-secondary-500)' }}></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                style={{
-                  backgroundColor: 'var(--color-primary-600)',
-                  outlineColor: 'var(--color-primary-600)'
-                }}
-              >
-                Request Transportation
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="space-y-8">
+              <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900">
+                Wheelchair Transportation
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Our wheelchair rides use vehicles with a ramp and secured seating, so you can travel safely in your own chair. Our trained staffs help you board, make sure you're secure before we leave, and help you off at your destination. Whether you're going to a doctor's office, a clinic or a hospital, we'll get you there and take care of the details along the way.
+              </p>
+              <Button href="#ready">Request a Wheelchair Ride</Button>
             </div>
-
-            <div className="relative aspect-[4/5]">
-              <div className="absolute inset-0 bg-gray-200">
-                <Image
-                  src="/picture1.jpeg"
-                  alt="Wheelchair-accessible transportation vehicle"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 41vw"
-                  className="object-cover"
-                  loading="eager"
-                />
-              </div>
+            <div className="h-full min-h-[200px]">
+              <PhotoGrid
+                layout="stacked"
+                images={[
+                  { src: "/picture1.jpeg", alt: "Wheelchair lift", size: "large" },
+                  { src: "/picture2.jpeg", alt: "Wheelchair securement system", size: "small" },
+                  { src: "/picture3.jpeg", alt: "Accessible interior", size: "small" },
+                  { src: "/picture4.jpeg", alt: "Comfortable transportation", size: "small" }
+                ]}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Ambulatory Transportation Section */}
+      {/* Ambulatory Section (Mirrored) */}
       <section id="ambulatory" className="py-24 lg:py-32 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            <div className="relative aspect-[4/5]">
-              <div className="absolute inset-0 bg-gray-200">
-                <Image
-                  src="/picture2.jpeg"
-                  alt="Ambulatory transportation with passenger and driver"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 41vw"
-                  className="object-cover"
-                  loading="eager"
-                />
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="h-full min-h-[200px]">
+              <PhotoGrid
+                layout="mirrored"
+                images={[
+                  { src: "/picture1.jpeg", alt: "Door-to-door assistance", size: "small" },
+                  { src: "/picture2.jpeg", alt: "Comfortable seating", size: "small" },
+                  { src: "/picture3.jpeg", alt: "Professional driver", size: "large" },
+                  { src: "/picture4.jpeg", alt: "Safe transportation", size: "small" }
+                ]}
+              />
             </div>
-
-            <div className="space-y-12">
-              <div className="space-y-6">
-                <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-                  Support when you need it.<br />
-                  <span style={{ color: 'var(--color-primary-600)' }}>Independence when you can.</span>
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  For passengers who can walk or transfer into a vehicle but may need additional assistance getting to and from their appointment.
-                </p>
-              </div>
-
-              <div className="space-y-8">
-                <h3 className="text-xl font-medium text-gray-900">WHAT TO EXPECT</h3>
-                <div className="space-y-4">
-                  {[
-                    "Scheduled pickup",
-                    "Assistance when needed",
-                    "Comfortable transportation",
-                    "Safe arrival at your destination"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4">
-                      <span className="text-2xl font-semibold" style={{ color: 'var(--color-primary-600)' }}>
-                        0{index + 1}
-                      </span>
-                      <p className="text-gray-700 pt-1">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <h3 className="text-xl font-medium text-gray-900">WHO THIS SERVICE IS FOR</h3>
-                <p className="text-gray-600 mb-4">Passengers who:</p>
-                <ul className="space-y-3">
-                  {[
-                    "Walk independently",
-                    "Use a cane or walker",
-                    "Can transfer into a vehicle",
-                    "Need additional support getting to appointments"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-700">
-                      <span className="w-1.5 h-1.5 rounded-full mt-2.5 flex-shrink-0" style={{ backgroundColor: 'var(--color-secondary-500)' }}></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                style={{
-                  backgroundColor: 'var(--color-primary-600)',
-                  outlineColor: 'var(--color-primary-600)'
-                }}
-              >
-                Request Transportation
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Not Sure Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
-            NOT SURE WHICH SERVICE YOU NEED?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Every passenger has different mobility needs. Tell us about your transportation needs and we'll help you determine which service is appropriate.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            style={{
-              backgroundColor: 'var(--color-primary-600)',
-              outlineColor: 'var(--color-primary-600)'
-            }}
-          >
-            Get in Touch
-          </Link>
-        </div>
-      </section>
-
-      {/* Service Area Section */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="space-y-8">
-              <p className="text-sm font-medium tracking-wide uppercase" style={{ color: 'var(--color-secondary-600)' }}>
-                SERVICE AREA
-              </p>
               <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900">
-                SERVING THE OMAHA<br />
-                <span style={{ color: 'var(--color-primary-600)' }}>METROPOLITAN AREA</span>
+                Ambulatory Transportation
               </h2>
-              <p className="text-xl text-gray-600">
-                Omaha · La Vista · Bellevue · Papillion<br />
-                and surrounding communities
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Ambulatory rides are for people who can walk but need a steady arm, a little extra time or just a dependable ride. We meet you at the door, help you into the vehicle and see you safely to your destination. If getting in and out of a regular car is hard, or you'd rather not travel alone, this service is for you.
               </p>
-              <Link
-                href="/service-area"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                style={{
-                  backgroundColor: 'var(--color-primary-600)',
-                  outlineColor: 'var(--color-primary-600)'
-                }}
-              >
-                Check Our Service Area
-              </Link>
-            </div>
-
-            <div className="relative aspect-square">
-              <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-32 h-32 mx-auto rounded-full border-4 flex items-center justify-center"
-                    style={{ borderColor: 'var(--color-primary-600)', backgroundColor: 'var(--color-primary-50)' }}>
-                    <span className="text-4xl">📍</span>
-                  </div>
-                  <p className="text-lg text-gray-600">Omaha Metro Service Area</p>
-                </div>
-              </div>
+              <Button href="#ready">Request an Ambulatory Ride</Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      {/* Closing CTA */}
+      <section id="ready" className="py-24 lg:py-32" style={{ backgroundColor: 'var(--color-primary-600)' }}>
         <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
-            READY FOR YOUR NEXT RIDE?
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-8">
+            Ready for your ride?
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Reliable transportation for the journeys that matter.
-          </p>
-          <Link
+          <Button 
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            style={{
-              backgroundColor: 'var(--color-primary-600)',
-              outlineColor: 'var(--color-primary-600)'
-            }}
+            variant="gold"
           >
-            Request Transportation
-          </Link>
+            Request Transport
+          </Button>
         </div>
       </section>
     </div>

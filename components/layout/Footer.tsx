@@ -2,9 +2,8 @@ import Link from "next/link";
 
 const footerNavigation = {
   company: [
-    { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Service Area", href: "/service-area" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [
