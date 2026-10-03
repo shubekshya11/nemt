@@ -38,7 +38,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium leading-6 text-gray-900 hover:text-gray-600 transition-colors tracking-wide"
+              className="text-base font-medium leading-6 text-gray-900 hover:text-gray-600 transition-colors tracking-wide"
             >
               {item.name}
             </Link>
@@ -96,7 +96,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50 tracking-wide"
+                className="block rounded-lg px-3 py-2 text-lg font-medium leading-7 text-gray-900 hover:bg-gray-50 tracking-wide"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
@@ -104,7 +104,7 @@ export function Header() {
             ))}
             <Link
               href="/contact"
-              className="block rounded-lg px-3 py-2 text-base font-medium leading-7 hover:bg-gray-50 tracking-wide"
+              className="block rounded-lg px-3 py-2 text-lg font-medium leading-7 hover:bg-gray-50 tracking-wide"
               style={{ color: 'var(--color-primary-600)' }}
               onClick={() => setMobileMenuOpen(false)}
             >
