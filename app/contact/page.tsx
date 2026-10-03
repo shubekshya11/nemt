@@ -7,6 +7,13 @@ import { z } from "zod";
 import { Button } from "@/components/ui/Button";
 import { Photo } from "@/components/ui/Photo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { FaPhone, FaEnvelope, FaLocationDot } from "react-icons/fa6";
+import dynamic from "next/dynamic";
+
+const ServiceAreaMap = dynamic(() => import("@/components/ServiceAreaMap"), {
+  ssr: false,
+  loading: () => <div className="h-[350px] w-full animate-pulse rounded-2xl bg-gray-100" />,
+});
 
 const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -70,73 +77,49 @@ export default function ContactPage() {
 
   return (
     <div className="flex flex-col">
-      {/* Header Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-8">
-              <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
-                Contact Us
-              </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Questions about a ride, coverage or service areas? Send us a note or call. We read every message.
-              </p>
-            </div>
-            <div className="h-full min-h-[150px] lg:min-h-[200px]">
-              <Photo 
-                src="/picture1.jpeg" 
-                alt="Friendly dispatch team" 
-                ratio="aspect-[16/9]" 
-                priority 
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Get In Touch Section */}
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
-            title="Get In Touch"
-            intro="Let's answer your queries"
+            title="Contact Us"
+            intro="Have questions about our services? We're here to help. Reach out to us and we'll respond as soon as we can."
             className="mb-12"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Contact Details */}
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
-                  <span className="text-white font-bold text-sm">Ph</span>
+          <div className="space-y-12">
+            {/* Contact Details - Horizontal */}
+            <div className="flex flex-col sm:flex-row gap-8 justify-center">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
+                  <FaPhone className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Phone number</h3>
-                  <a href="tel:4242981507" className="text-xl text-gray-600 hover:text-gray-900 transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Phone</h3>
+                  <a href="tel:4242981507" className="text-base text-gray-600 hover:text-gray-900 transition-colors">
                     (424) 298-1507
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
-                  <span className="text-white font-bold text-sm">@</span>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
+                  <FaEnvelope className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Email address</h3>
-                  <a href="mailto:guidewaynemt@gmail.com" className="text-xl text-gray-600 hover:text-gray-900 transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Email</h3>
+                  <a href="mailto:guidewaynemt@gmail.com" className="text-base text-gray-600 hover:text-gray-900 transition-colors">
                     guidewaynemt@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
-                  <span className="text-white font-bold text-sm">Pin</span>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-primary-600)' }}>
+                  <FaLocationDot className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Location</h3>
-                  <address className="text-xl text-gray-600 not-italic">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Location</h3>
+                  <address className="text-base text-gray-600 not-italic">
                     LaVista, Nebraska
                   </address>
                 </div>
@@ -144,8 +127,8 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white border border-gray-200 rounded-lg p-8">
-              <h3 className="text-2xl font-medium text-gray-900 mb-6">Send Message</h3>
+            <div className="bg-white border border-gray-200 rounded-lg p-8 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-medium text-gray-900 mb-6">Send us a message</h3>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -157,7 +140,7 @@ export default function ContactPage() {
                       {...register("firstName")}
                       className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
                       style={{ outlineColor: 'var(--color-primary-600)' }}
-                      placeholder="John"
+                      placeholder="Your Name"
                     />
                     {errors.firstName && (
                       <p className="text-sm text-red-600">{errors.firstName.message}</p>
@@ -172,7 +155,7 @@ export default function ContactPage() {
                       {...register("lastName")}
                       className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
                       style={{ outlineColor: 'var(--color-primary-600)' }}
-                      placeholder="Doe"
+                      placeholder="Your Last Name"
                     />
                     {errors.lastName && (
                       <p className="text-sm text-red-600">{errors.lastName.message}</p>
@@ -191,7 +174,7 @@ export default function ContactPage() {
                       {...register("email")}
                       className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
                       style={{ outlineColor: 'var(--color-primary-600)' }}
-                      placeholder="john@example.com"
+                      placeholder="abc@example.com"
                     />
                     {errors.email && (
                       <p className="text-sm text-red-600">{errors.email.message}</p>
@@ -207,7 +190,7 @@ export default function ContactPage() {
                       {...register("phone")}
                       className="w-full px-4 py-3 border border-gray-300 focus:outline focus:outline-2 focus:outline-offset-2 rounded-md"
                       style={{ outlineColor: 'var(--color-primary-600)' }}
-                      placeholder="(424) 298-1507"
+                      placeholder=""
                     />
                     {errors.phone && (
                       <p className="text-sm text-red-600">{errors.phone.message}</p>
@@ -242,15 +225,14 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-24 lg:py-32 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="h-[300px] md:h-[400px] bg-gray-100 rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-6xl mb-4">🗺️</div>
-              <p className="text-xl text-gray-600">Google Maps Placeholder</p>
-              <p className="text-sm text-gray-500 mt-2">Ready for Google Maps embed</p>
-            </div>
-          </div>
+          <SectionHeading
+            title="Service Area"
+            intro="We serve Omaha, La Vista, Bellevue, Papillion and the surrounding communities in Douglas and Sarpy Counties."
+            className="mb-12"
+          />
+          <ServiceAreaMap />
         </div>
       </section>
     </div>

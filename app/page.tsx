@@ -1,5 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ServiceAreaMap = dynamic(() => import("@/components/ServiceAreaMap"), {
+  ssr: false,
+  loading: () => <div className="h-[350px] w-full animate-pulse rounded-2xl bg-gray-100" />,
+});
 
 export default function Home() {
   return (
@@ -271,16 +279,8 @@ export default function Home() {
             </div>
 
             {/* Right - Map Visual */}
-            <div className="relative aspect-square max-w-md mx-auto lg:mx-0 bg-gray-100">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-y-3">
-                  <div className="w-24 h-24 mx-auto rounded-full border-4 flex items-center justify-center"
-                    style={{ borderColor: 'var(--color-primary-600)', backgroundColor: 'var(--color-primary-50)' }}>
-                    <span className="text-3xl">📍</span>
-                  </div>
-                  <p className="text-base text-gray-600">Omaha Metro Service Area</p>
-                </div>
-              </div>
+            <div className="relative aspect-square max-w-md mx-auto lg:mx-0">
+              <ServiceAreaMap />
             </div>
           </div>
         </div>
