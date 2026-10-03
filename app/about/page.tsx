@@ -1,13 +1,35 @@
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { Photo } from "@/components/ui/Photo";
+import { FaWheelchair, FaPersonWalkingWithCane, FaCalendarCheck, FaBuilding } from "react-icons/fa6";
 
 export default function AboutPage() {
   const whoWeServe = [
-    { icon: "👨‍⚕️", title: "Patients", description: "Adults who need accessible rides to appointments." },
-    { icon: "👨‍👩‍👧‍👦", title: "Families", description: "Relatives who want to know their loved one arrived safely." },
-    { icon: "🏥", title: "Clinics", description: "Healthcare facilities that book rides for patients." },
-    { icon: "🤝", title: "Care Providers", description: "Agencies and aides coordinating daily transport." }
+    {
+      icon: <FaWheelchair size={36} />,
+      title: "Wheelchair Riders",
+      description: "Ramp-equipped vehicles and trained drivers who help you board, ride and arrive safely.",
+      image: "/picture1.jpeg"
+    },
+    {
+      icon: <FaPersonWalkingWithCane size={36} />,
+      title: "Seniors",
+      description: "A steady arm and a dependable ride to the doctor, with no rush at the door.",
+      image: "/picture2.jpeg"
+    },
+    {
+      icon: <FaCalendarCheck size={36} />,
+      title: "Recurring Appointments",
+      description: "Dialysis, physical therapy and other regular visits, on a schedule you can count on.",
+      image: "/picture3.jpeg"
+    },
+    {
+      icon: <FaBuilding size={36} />,
+      title: "Facilities and Caregivers",
+      description: "Nursing homes, assisted living, clinics and families who book rides for the people they care for.",
+      image: "/picture4.jpeg"
+    }
   ];
 
   return (
@@ -57,17 +79,45 @@ export default function AboutPage() {
       {/* Who We Serve Section */}
       <section className="py-24 lg:py-32 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-12">
-            Who We Serve
-          </h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-4">
+              Who We Serve
+            </h2>
+            <div className="w-16 h-1 mx-auto mb-6" style={{ backgroundColor: 'var(--color-primary-600)' }}></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Guideway provides non-emergency medical transportation in Omaha and the surrounding communities. Our vehicles have wheelchair ramps, and our drivers are trained to help every rider get to their appointment comfortably.
+            </p>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whoWeServe.map((item, index) => (
-              <Card
+              <Link
                 key={index}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-              />
+                href="/services"
+                className="group relative aspect-[4/5] sm:aspect-[3/4] rounded-lg overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                style={{ outlineColor: 'var(--color-primary-600)' }}
+              >
+                <div className="absolute inset-0 bg-gray-200">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div className="absolute top-4 left-4 text-white" aria-hidden="true">
+                  {item.icon}
+                </div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-white font-semibold text-lg mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-white/90 text-sm">
+                    {item.description}
+                  </p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
