@@ -1,24 +1,23 @@
 interface SectionHeadingProps {
   title: string;
-  subtitle?: string;
-  eyebrow?: string;
+  intro?: string;
+  textColor?: "gray" | "white";
   className?: string;
 }
 
-export function SectionHeading({ title, subtitle, eyebrow, className = "" }: SectionHeadingProps) {
+export function SectionHeading({ title, intro, textColor = "gray", className = "" }: SectionHeadingProps) {
+  const headingColor = textColor === "white" ? "text-white" : "text-gray-900";
+  const introColor = textColor === "white" ? "text-white/90" : "text-gray-600";
+  
   return (
-    <div className={`space-y-4 ${className}`}>
-      {eyebrow && (
-        <p className="text-sm font-medium tracking-wide uppercase" style={{ color: 'var(--color-secondary-600)' }}>
-          {eyebrow}
-        </p>
-      )}
-      <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
+    <div className={`text-center space-y-4 ${className}`}>
+      <h2 className={`text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1] ${headingColor}`}>
         {title}
       </h2>
-      {subtitle && (
-        <p className="text-xl text-gray-600">
-          {subtitle}
+      <div className="w-24 h-1 mx-auto rounded" style={{ backgroundColor: 'var(--color-primary-600)' }}></div>
+      {intro && (
+        <p className={`text-lg max-w-2xl mx-auto ${introColor}`}>
+          {intro}
         </p>
       )}
     </div>

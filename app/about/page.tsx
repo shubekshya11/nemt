@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Photo } from "@/components/ui/Photo";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FaWheelchair, FaPersonWalkingWithCane, FaCalendarCheck, FaBuilding } from "react-icons/fa6";
 
 export default function AboutPage() {
@@ -35,7 +36,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-24 lg:py-32 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8">
@@ -65,19 +66,17 @@ export default function AboutPage() {
       </section>
 
       {/* The Problem Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-8">
-            Why Choose Us?
-          </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            A missed appointment is often just a missed ride, and we built Guideway to fix that. Our vehicles have a wheelchair ramp, so riders who use a wheelchair don't have to transfer or struggle to get on board. Our drivers are trained to assist riders, and we take our time. You can book through our app or by calling us directly, whichever is easier for you or your family. We're a local company serving the Omaha metro, so when you call, you reach people who know the area you're traveling in.
-          </p>
+      <section className="py-12 md:py-16 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            title="Why Choose Us?"
+            intro="A missed appointment is often just a missed ride, and we built Guideway to fix that. Our vehicles have a wheelchair ramp, so riders who use a wheelchair don't have to transfer or struggle to get on board. Our drivers are trained to assist riders, and we take our time. You can book through our app or by calling us directly, whichever is easier for you or your family. We're a local company serving the Omaha metro, so when you call, you reach people who know the area you're traveling in."
+          />
         </div>
       </section>
 
       {/* Who We Serve Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-4">

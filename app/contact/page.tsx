@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/Button";
 import { Photo } from "@/components/ui/Photo";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -52,7 +53,7 @@ export default function ContactPage() {
   if (isSubmitted) {
     return (
       <div className="flex flex-col">
-        <section className="py-24 lg:py-32 bg-white">
+        <section className="py-12 md:py-16 bg-white">
           <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
             <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
               Thank You!
@@ -70,7 +71,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col">
       {/* Header Section */}
-      <section className="py-24 lg:py-32 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8">
@@ -94,16 +95,13 @@ export default function ContactPage() {
       </section>
 
       {/* Get In Touch Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-4">
-              Get In Touch
-            </h2>
-            <p className="text-xl text-gray-600">
-              Let's answer your queries
-            </p>
-          </div>
+          <SectionHeading
+            title="Get In Touch"
+            intro="Let's answer your queries"
+            className="mb-12"
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Contact Details */}
