@@ -6,7 +6,7 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col">
       {/* Intro Section */}
-      <section className="py-24 lg:py-32 bg-white">
+      <section className="pt-10 pb-16 lg:pt-12 lg:pb-20 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8">
@@ -24,14 +24,14 @@ export default function ServicesPage() {
                 <Button href="#ambulatory" variant="secondary">Ambulatory Rides</Button>
               </div>
             </div>
-            <div className="h-full min-h-[150px] lg:min-h-[200px]">
-              <Photo 
-                src="/picture4.jpeg" 
-                alt="Guideway vehicle at a clinic entrance" 
-                ratio="aspect-[16/9]" 
-                priority 
-              />
-            </div>
+            <div className="w-full max-w-xl self-center overflow-hidden rounded-2xl lg:ml-auto">
+  <Photo
+    src="/picture4.jpeg"
+    alt="Guideway vehicle at a clinic entrance"
+    ratio="aspect-[16/9]"
+    priority
+  />
+</div>
           </div>
         </div>
       </section>

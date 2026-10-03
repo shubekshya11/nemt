@@ -53,14 +53,14 @@ export default function AboutPage() {
                 </a>
               </div>
             </div>
-            <div className="h-full min-h-[150px] lg:min-h-[200px]">
-              <Photo 
-                src="/picture1.jpeg" 
-                alt="Driver helping a rider" 
-                ratio="aspect-[16/9]" 
-                priority 
-              />
-            </div>
+            <div className="w-full max-w-xl self-center overflow-hidden rounded-2xl lg:ml-auto">
+  <Photo
+    src="/picture1.jpeg"
+    alt="Driver helping a rider"
+    ratio="aspect-[16/9]"
+    priority
+  />
+</div>
           </div>
         </div>
       </section>

@@ -19,7 +19,7 @@ export default function Home() {
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6 lg:space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
-                <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
+                <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 leading-[1.1]">
                   YOUR JOURNEY.<br />
                   <span style={{ color: 'var(--color-primary-600)' }}>OUR CARE.</span>
                 </h1>
@@ -78,11 +78,11 @@ export default function Home() {
       <section className="py-12 md:py-16 bg-white">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
           <div className="text-center space-y-6">
-            <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 leading-[1.15]">
+            <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.15]">
               GETTING THERE SHOULD<br />
               <span style={{ color: 'var(--color-primary-600)' }}>BE THE EASY PART.</span>
             </h2>
-            <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
               Guideway Medical Transportation provides dependable non-emergency transportation for individuals who need safe, accessible and comfortable journeys to medical appointments and beyond.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left - Service List */}
             <div className="space-y-0">
-              <p className="text-md font-medium tracking-wide uppercase mb-8" style={{ color: 'var(--color-secondary-600)' }}>
+              <p className="text-xl font-medium tracking-wide uppercase mb-8" style={{ color: 'var(--color-secondary-600)' }}>
                 OUR SERVICES
               </p>
 
@@ -113,14 +113,14 @@ export default function Home() {
               ].map((service, index) => (
                 <div key={index} className="border-t border-gray-200 py-5">
                   <div className="flex items-start gap-4">
-                    <span className="text-2xl lg:text-3xl font-semibold" style={{ color: 'var(--color-primary-600)' }}>
+                    <span className="text-3xl lg:text-4xl font-semibold" style={{ color: 'var(--color-primary-600)' }}>
                       {service.number}
                     </span>
                     <div className="flex-1">
-                      <h3 className="text-lg lg:text-xl font-medium text-gray-900 mb-1">
+                      <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-1">
                         {service.title}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-base text-gray-600">
                         {service.description}
                       </p>
                     </div>
@@ -194,14 +194,14 @@ export default function Home() {
               ].map((step, index) => (
                 <div key={index} className="border-t border-gray-200 py-5">
                   <div className="flex items-start gap-4">
-                    <span className="text-2xl lg:text-3xl font-semibold" style={{ color: 'var(--color-primary-600)' }}>
+                    <span className="text-3xl lg:text-4xl font-semibold" style={{ color: 'var(--color-primary-600)' }}>
                       {step.number}
                     </span>
                     <div className="flex-1">
-                      <h3 className="text-lg lg:text-xl font-medium text-gray-900 mb-1">
+                      <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-1">
                         {step.title}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-base text-gray-600">
                         {step.description}
                       </p>
                     </div>
@@ -233,7 +233,7 @@ export default function Home() {
 
             {/* Right - Content */}
             <div className="space-y-5">
-              <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 leading-[1.15]">
+              <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.15]">
                 DESIGNED AROUND<br />
                 <span style={{ color: 'var(--color-primary-600)' }}>YOUR NEEDS.</span>
               </h2>
@@ -258,12 +258,12 @@ export default function Home() {
       {/* Left - Content */}
       <div className="space-y-8">
         <div className="space-y-3">
-          <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900">
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900">
             WHERE WE GO
           </h2>
 
           <p
-            className="text-2xl lg:text-3xl font-semibold"
+            className="text-3xl lg:text-4xl font-semibold"
             style={{ color: 'var(--color-primary-600)' }}
           >
             OMAHA METRO AREA
@@ -305,7 +305,7 @@ export default function Home() {
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 leading-[1.25]">
+            <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.25]">
               SAFE TRANSPORTATION.<br />
               THOUGHTFUL SERVICE.<br />
               <span style={{ color: 'var(--color-primary-600)' }}>A JOURNEY WITH DIGNITY.</span>
@@ -320,7 +320,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left - Content */}
             <div className="space-y-5">
-              <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 leading-[1.15]">
+              <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 leading-[1.15]">
                 READY WHEN<br />
                 <span style={{ color: 'var(--color-primary-600)' }}>YOU ARE.</span>
               </h2>
